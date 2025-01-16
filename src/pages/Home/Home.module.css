@@ -1,0 +1,8 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: .35fr 1fr;
+    margin-bottom: auto;
+    height: 100%;
+    margin: 20px 0;
+    gap: 30px;
+}

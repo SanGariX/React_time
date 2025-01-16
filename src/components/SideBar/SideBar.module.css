@@ -1,0 +1,31 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 30px;
+    background-color: #181818;
+    border-radius: 20px;
+    padding: 20px 15px;
+}
+.nav{
+    margin-bottom: auto;
+}
+.title{
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.menu-item{
+    font-size: 19px;
+}
+.footer{
+    font-size: 17px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+.link{
+    text-decoration: solid underline #fff;
+}

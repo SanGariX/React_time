@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8vw;
+    padding: 8px 10px;
+}
+.info{
+    display: flex;
+    align-items: center;
+    width: clamp(100px, 100%, 850px);
+    justify-content: space-between;
+}

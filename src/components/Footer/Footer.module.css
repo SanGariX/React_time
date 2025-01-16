@@ -1,0 +1,25 @@
+.footer{
+    background-color: #181818;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+.socials{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.instagram{
+    width: 30px;
+}
+.reddit{
+    width: 30px;
+}
+.instagram{
+    width: 30px;
+}
+.viber{
+    width: 30px;
+}

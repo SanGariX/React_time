@@ -1,0 +1,33 @@
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	background-color: #181818;
+	padding: 6px 10px;
+	border-radius: 8px;
+    position: relative;
+}
+.search-img {
+	width: 22px;
+}
+.input{
+    min-width: 140px;
+	width: clamp(100px, 15vw, 200px);
+    max-width: 200px;
+}
+.input input {
+	background-color: inherit;
+    width: 100%;
+}
+.box{
+    position: absolute;
+    top: 40px;
+    background-color: #576067;
+    border-radius: 12px;
+    width: 100%;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
