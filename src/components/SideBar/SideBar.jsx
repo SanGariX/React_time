@@ -1,14 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import styles from './SideBar.module.css'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 const SideBar = () => {
 	const fetchData = useSelector((state) => {
 		return state.categories.data
 	})
-	const localOnClick = (name)=>{
-		localStorage.setItem("categories", name)
-	}
-	const localCategories = localStorage.getItem("categories")
+	const [categories, setCategories] = useState("")
 	return (
 		<>
 			<aside className={styles.sidebar}>
@@ -20,8 +18,8 @@ const SideBar = () => {
 								fetchData.map(({ id, name }) => (
 									<li key={id} className={styles['menu-item']}>
 										<NavLink
-											className={localCategories === name ? styles["active-categories"] : ''}
-											onClick={()=>{localOnClick(name)}}
+											className={categories === name ? styles["active-categories"] : ''}
+											onClick={()=>{setCategories(name)}}
 											to={`/category/${id}`}
 										>
 											{name}

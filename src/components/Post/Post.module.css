@@ -1,23 +1,61 @@
 .products {
 	width: 100%; /* Або вказати конкретну ширину */
 	max-width: 1000px; /* Для обмеження розміру слайдера */
-    max-height: 560px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+	display: flex;
+	overflow: hidden;
+	align-items: center;
 	margin: 0 auto; /* Центрування */
-    border-radius: 20px;
+	border-radius: 20px;
+}
+.swiperisSlide {
+	position: relative;
+}
+.box_img {
+	height: 560px;
+	background-color: #181818;
+	border-radius: 20px;
 }
 .image {
-    border-radius: 20px;
-	width: 100%;
+	max-width: 450px;
+	position: absolute;
+	right: 20px;
+	bottom: 0px;
+	z-index: 2;
 }
-.swipering{
-    max-height: 560px;
-    display: flex !important;
-    align-items: center !important;
+.slider_title {
+	font-size: 65px;
+	opacity: 0.14;
+	text-align: center;
+	padding-top: 60px;
+	padding-bottom: 90px;
+	position: relative;
+	z-index: 2;
 }
-.swiperisSlide{
-    display: flex !important;
-    align-items: center !important;
+.slider_subTitle {
+	font-size: 45px;
+	opacity: 0.2;
+	padding-left: 50px;
+	position: relative;
+	z-index: 2;
+}
+.btn_slider {
+	position: absolute;
+	left: 90px;
+	bottom: 60px;
+	padding: 10px 20px;
+	background-color: rgb(30, 91, 137);
+	font-size: 20px;
+	border-radius: 13px;
+	z-index: 2;
+}
+.background {
+	width: 1000px;
+	height: 500px;
+	background-color: #666666;
+	opacity: 0.9;
+	position: absolute;
+	z-index: 1;
+	bottom: -130px;
+	right: -270px;
+	rotate: -40deg;
 }
