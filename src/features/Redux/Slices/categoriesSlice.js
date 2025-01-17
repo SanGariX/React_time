@@ -1,16 +1,41 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
+import { BASE_URL } from '../../../utils/Constant/fetchConstant'
 const initialState = {
-	sliceKey: null,
+	data: [],
+	status: '',
 }
-const categories = createSlice({
-	name: 'slice',
+export const asyncFetch = createAsyncThunk(
+	'data/respons/asyncFetch',
+	async (_, thunkApi) => {
+		try {
+			const respons = await axios(`${BASE_URL}/categories`)
+			return respons.data
+		} catch (err) {
+			console.log(err)
+			return thunkApi.rejectWithValue(err)
+		}
+	}
+)
+const categoriesSlice = createSlice({
+	name: 'categories',
 	initialState,
-	reducers: {
-		changeCategories: (state) => {
-			console.log(state)
-		},
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(asyncFetch.rejected, (state, action) => {
+				state.data = action.payload
+				state.status = 'rejected'
+			})
+			.addCase(asyncFetch.fulfilled, (state, action) => {
+				state.data = action.payload
+				state.status = 'fulfilled'
+			})
+			.addCase(asyncFetch.pending, (state, action) => {
+				state.data = action.payload
+				state.status = 'pending'
+			})
 	},
 })
 
-export const {changeCategories } = categories.actions
-export default categories.reducer
+export default categoriesSlice.reducer

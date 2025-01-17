@@ -1,0 +1,23 @@
+.products {
+	width: 100%; /* Або вказати конкретну ширину */
+	max-width: 1000px; /* Для обмеження розміру слайдера */
+    max-height: 560px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+	margin: 0 auto; /* Центрування */
+    border-radius: 20px;
+}
+.image {
+    border-radius: 20px;
+	width: 100%;
+}
+.swipering{
+    max-height: 560px;
+    display: flex !important;
+    align-items: center !important;
+}
+.swiperisSlide{
+    display: flex !important;
+    align-items: center !important;
+}

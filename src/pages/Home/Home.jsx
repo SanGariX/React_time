@@ -1,3 +1,4 @@
+import Post from '../../components/Post/Post';
 import SideBar from '../../components/SideBar/SideBar';
 import styles from './Home.module.css'
 const Home = () => {
@@ -5,7 +6,7 @@ const Home = () => {
         <div className={styles.wrapper}>
             <SideBar/>
             <main className={styles.main}>
-                <p>kvsdkvnsdv</p>
+                <Post/>
             </main>
         </div>
     );
