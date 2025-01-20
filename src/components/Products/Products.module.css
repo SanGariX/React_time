@@ -63,9 +63,16 @@
     display: flex;
     background-color: #181818;
     border-radius: 10px;
-    padding: 10px 0; 
+    padding: 10px; 
 } 
 .purchases{
     font-size: 17px;
     color: rgb(77, 77, 77);
+}
+.product{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 450px;
 }
