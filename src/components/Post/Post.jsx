@@ -34,7 +34,7 @@ const Post = () => {
 								<h2 className={styles.slider_title}>{title}</h2>
 								<h3 className={styles.slider_subTitle}>{subTitle}</h3>
 								<img className={styles.image} src={img} />
-								<button className={styles.btn_slider}>By NOW</button>
+								<button className={styles.btn_slider}>Shop Now</button>
 							</div>
 						</SwiperSlide>
 					))}

@@ -5,8 +5,8 @@ const initialState = {
 	data: [],
 	status: '',
 }
-export const asyncFetch = createAsyncThunk(
-	'data/respons/asyncFetch',
+export const asyncFetchCategories = createAsyncThunk(
+	'data/respons/asyncFetchCategories',
 	async (_, thunkApi) => {
 		try {
 			const respons = await axios(`${BASE_URL}/categories`)
@@ -23,15 +23,15 @@ const categoriesSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(asyncFetch.rejected, (state, action) => {
+			.addCase(asyncFetchCategories.rejected, (state, action) => {
 				state.data = action.payload
 				state.status = 'rejected'
 			})
-			.addCase(asyncFetch.fulfilled, (state, action) => {
+			.addCase(asyncFetchCategories.fulfilled, (state, action) => {
 				state.data = action.payload
 				state.status = 'fulfilled'
 			})
-			.addCase(asyncFetch.pending, (state, action) => {
+			.addCase(asyncFetchCategories.pending, (state, action) => {
 				state.data = action.payload
 				state.status = 'pending'
 			})

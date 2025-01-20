@@ -4,11 +4,13 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import RoutesApp from './utils/routes/Routes'
 import { useEffect } from 'react'
-import { asyncFetch } from './features/Redux/Slices/categoriesSlice.js'
+import { asyncFetchCategories } from './features/Redux/Slices/categoriesSlice.js'
+import { asyncFetchProducts } from './features/Redux/Slices/productsSlice.js'
 function App() {
 	const dispatch = useDispatch()
 	useEffect(() => {
-		dispatch(asyncFetch())
+		dispatch(asyncFetchCategories())
+		dispatch(asyncFetchProducts())
 	}, [dispatch])
 	return (
 		<>

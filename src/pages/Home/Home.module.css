@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper-bottom_header{
     display: grid;
     grid-template-columns: minmax(230px,.28fr) 1fr;
     margin-bottom: auto;

@@ -2,11 +2,12 @@ import { NavLink } from 'react-router-dom'
 import styles from './SideBar.module.css'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import SkeletonPending from '../Skeleton/SkeletonPending'
 const SideBar = () => {
-	const fetchData = useSelector((state) => {
-		return state.categories.data
+	const { data: fetchData, status } = useSelector((state) => {
+		return state.categories
 	})
-	const [categories, setCategories] = useState("")
+	const [categories, setCategories] = useState('')
 	return (
 		<>
 			<aside className={styles.sidebar}>
@@ -14,18 +15,25 @@ const SideBar = () => {
 				<nav className={styles.nav}>
 					<nav className={styles['navigation-categories']}>
 						<ul className={styles.menu}>
-							{!!fetchData &&
+							{status === 'pending' ? (
+								<SkeletonPending />
+							) : (
 								fetchData.map(({ id, name }) => (
 									<li key={id} className={styles['menu-item']}>
 										<NavLink
-											className={categories === name ? styles["active-categories"] : ''}
-											onClick={()=>{setCategories(name)}}
+											className={
+												categories === name ? styles['active-categories'] : ''
+											}
+											onClick={() => {
+												setCategories(name)
+											}}
 											to={`/category/${id}`}
 										>
 											{name}
 										</NavLink>
 									</li>
-								))}
+								))
+							)}
 						</ul>
 					</nav>
 				</nav>
