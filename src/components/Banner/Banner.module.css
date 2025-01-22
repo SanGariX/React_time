@@ -1,0 +1,54 @@
+.banner{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    overflow: hidden;
+    border-radius: 20px;
+    height: 550px;
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    
+    background-color: #181818;
+}
+.left *{
+    color: #8958C4;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-size: 60px;
+}
+.content span{
+    font-size: 100px;
+}
+.more{
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #8958C4;
+    border-radius: 8px;
+    font-size: 20px;
+}
+.right{
+    padding: 35px;
+    background-position: center left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.discount{
+    font-size: 30px;
+    font-style: italic;
+    color: #1f1f1f;
+}
+.discount span{
+    font-style: normal !important;
+    color: rgb(183, 0, 0); 
+}

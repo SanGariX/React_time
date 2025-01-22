@@ -1,39 +1,19 @@
 import { Link } from 'react-router-dom'
 import styles from './Products.module.css'
 import { useSelector } from 'react-redux'
+import { filterImg } from '../../utils/FragmentCod/ImageRec'
 const Products = ({ title, products = [], amount, style = {} }) => {
 	const { data } = useSelector((state) => {
 		return state.categories
 	})
 	const list = products.filter((_, i) => i < amount)
-	const filterImg = (img) => {
-		if (!img) {
-			return
-		}
-		const copyImg = []
-		img.split('').forEach((item) => {
-			switch (item) {
-				case '"':
-					return
-				case '[':
-					return
-				case ']':
-					return
-				case `'\'`:
-					return
-			}
-			copyImg.push(item)
-		})
-		return copyImg.join('')
-	}
+
 	const categoriesClickLink = (nameCat) => {
-		let resultId
-		data.forEach(({ name, id }) => {
+		for (const {name, id} of data) {
 			if (name === nameCat) {
-				resultId = id
+				return id
 			}
-		})
-		return resultId
+		}
 	}
 	return (
 		<section className={styles.products} style={style}>
