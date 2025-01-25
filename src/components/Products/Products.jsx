@@ -2,16 +2,19 @@ import { Link } from 'react-router-dom'
 import styles from './Products.module.css'
 import { useSelector } from 'react-redux'
 import { filterImg } from '../../utils/FragmentCod/ImageRec'
+import withSkeleton from '../../utils/Hocs/withSkeleton'
 const Products = ({ title, products = [], amount, style = {} }) => {
 	const { data } = useSelector((state) => {
 		return state.categories
 	})
 	const list = products.filter((_, i) => i < amount)
 
-	const categoriesClickLink = (nameCat) => {
-		for (const {name, id} of data) {
-			if (name === nameCat) {
-				return id
+	const categoriesClickLink = async (nameCat) => {
+		if(data.length){
+			for (const { name, id } of data) {
+				if (name === nameCat) {
+					return id
+				}
 			}
 		}
 	}
@@ -22,23 +25,31 @@ const Products = ({ title, products = [], amount, style = {} }) => {
 				{list.length &&
 					list.map(({ id, images, title, category: { name: cat }, price }) => (
 						<div key={id} className={styles.product}>
-							<Link to={`/products/${id}`}>
+							<Link to={`/product/${id}`}>
 								<div className={styles.image_box}>
 									<img className={styles.image} src={filterImg(images[0])} />
 								</div>
 								<h3 className={styles.title_wrapper}>{title}</h3>
 							</Link>
-							<Link to={`/category/${categoriesClickLink(cat)}`}>
-								<p className={styles.cat}>{cat}</p>
-							</Link>
-							<div className={styles.info}>
-								<div className={styles.prices}>
-									<p className={styles.oldPrice}>{Math.floor(price * 0.8)}$</p>
-									<span> / </span>
-									<p className={styles.price}>{price}$</p>
-								</div>
-								<div className={styles.purchases}>
-									purchases {Math.floor(Math.random() * 100 + 100)}
+
+							<div>
+								<Link
+									className={styles.cat_link}
+									to={`/category/${categoriesClickLink(cat)}`}
+								>
+									<p className={styles.cat}>{cat}</p>
+								</Link>
+								<div className={styles.info}>
+									<div className={styles.prices}>
+										<p className={styles.oldPrice}>
+											{Math.floor(price * 0.8)}$
+										</p>
+										<span> / </span>
+										<p className={styles.price}>{price}$</p>
+									</div>
+									<div className={styles.purchases}>
+										purchases {Math.floor(Math.random() * 100 + 100)}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -47,5 +58,5 @@ const Products = ({ title, products = [], amount, style = {} }) => {
 		</section>
 	)
 }
-
-export default Products
+const WithSkeletonComponent = withSkeleton(Products)
+export default WithSkeletonComponent	

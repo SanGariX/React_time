@@ -1,0 +1,15 @@
+.error{
+    font-size: 50px;
+    text-align: center; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    color: red;
+}
+.wrapper_error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}

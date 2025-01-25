@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from '../../../utils/Constant/fetchConstant'
 const initialState = {
 	list: [],
-	// filtered: [],
+	filtered: [],
 	// related: [],
 	status: '',
 }
@@ -22,7 +22,11 @@ export const asyncFetchProducts = createAsyncThunk(
 const productSlice = createSlice({
 	name: 'products',
 	initialState,
-	reducers: {},
+	reducers: {
+		filterByPrice: (state, { payload }) => {
+			state.filtered = state.list.filter(({ price }) => price < payload)
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(asyncFetchProducts.rejected, (state, action) => {
@@ -39,5 +43,5 @@ const productSlice = createSlice({
 			})
 	},
 })
-
+export const { filterByPrice } = productSlice.actions
 export default productSlice.reducer

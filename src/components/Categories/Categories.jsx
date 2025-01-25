@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Categories.module.css'
+import withSkeleton from '../../utils/Hocs/withSkeleton'
 const Categories = ({ title, products = [], amount }) => {
 	const list = products.filter((_, i) => i < amount)
 	return (
@@ -20,5 +21,5 @@ const Categories = ({ title, products = [], amount }) => {
 		</section>
 	)
 }
-
-export default Categories
+const WithSkeletonComponent = withSkeleton(Categories)
+export default WithSkeletonComponent

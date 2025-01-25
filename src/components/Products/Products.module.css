@@ -34,13 +34,12 @@
 }
 .title_wrapper{
     font-size: 25px;
-    margin-top: 30px;
+    padding: 20px 10px;
     color: #d3d3d3;
 }
 .cat{
     font-size: 23px;
     margin-top: 15px;
-    margin-bottom: 15px;
     color: rgb(76, 76, 76);
 }
 .prices{
@@ -63,9 +62,10 @@
 }
 .info{
     display: flex;
+    align-items: center;    
     background-color: #181818;
-    border-radius: 10px;
-    padding: 10px; 
+    padding: 10px 5px; 
+    height: 60px;
 } 
 .purchases{
     font-size: 17px;
@@ -76,8 +76,12 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    height: 500px;
+    height: 550px;
     background-color: #212121;
-    padding: 30px 15px;
     border-radius: 10px;
+}
+.cat_link{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
 }

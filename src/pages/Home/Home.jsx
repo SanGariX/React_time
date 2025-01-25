@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Post from '../../components/Post/Post'
 import Products from '../../components/Products/Products'
 import SideBar from '../../components/SideBar/SideBar'
@@ -7,25 +7,40 @@ import SkeletonError from '../../components/Skeleton/SkeletonError'
 import SkeletonPending from '../../components/Skeleton/SkeletonPending'
 import Categories from '../../components/Categories/Categories'
 import Banner from '../../components/Banner/Banner'
+import { useEffect } from 'react'
+import { filterByPrice } from '../../features/Redux/Slices/productsSlice'
 const Home = () => {
-	const { products, categories } = useSelector((state) => {
-		return state
-	})
+	const dispatch = useDispatch()
+	const { products, categories } = useSelector((state) => state)
+	useEffect(() => {
+		if (!products.list?.length) return
+		dispatch(filterByPrice(100))
+	}, [dispatch, products.list?.length])
 	return (
 		<main className={styles.main}>
 			<div className={styles['wrapper-bottom_header']}>
-				<SideBar />
-				<Post />
+				<SideBar status={categories.status} />
+				<Post status={categories.status} />
 			</div>
-			{products.status === 'pending' ? (
-				<SkeletonPending />
-			) : products.status === 'error' ? (
-				<SkeletonError />
-			) : (
-				<Products products={products.list} amount={5} title={'Trending'} />
-			)}
-			<Categories products={categories.data} amount={5} title={'Worth seeing'} />
-			<Banner/>
+			<Products
+				status={products.status}
+				products={products.list}
+				amount={5}
+				title={'Trending'}
+			/>
+			<Categories
+				status={categories.status}
+				products={categories.data}
+				amount={5}
+				title={'Worth seeing'}
+			/>
+			<Banner status={categories.status} />
+			<Products
+				status={products.status}
+				products={products.filtered}
+				amount={5}
+				title={'Less than 100$'}
+			/>
 		</main>
 	)
 }

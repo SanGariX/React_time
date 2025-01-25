@@ -1,5 +1,6 @@
 import styles from './Banner.module.css'
 import bannerImg from '../../assets/Post/banner.jpg'
+import withSkeleton from '../../utils/Hocs/withSkeleton'
 const Banner = () => {
 	return (
 		<section className={styles.banner}>
@@ -17,5 +18,5 @@ const Banner = () => {
 		</section>
 	)
 }
-
-export default Banner
+const WithSkeletonComponent = withSkeleton(Banner)
+export default WithSkeletonComponent
