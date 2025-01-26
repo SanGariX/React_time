@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import styles from './Categories.module.css'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
+import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 const Categories = ({ title, products = [], amount }) => {
 	const list = products.filter((_, i) => i < amount)
 	return (
-		<section className={styles.section}>
+		<section className={`content ${SetTimeout(products) && 'loaded'} ${styles.section}`}>
 			<h2 className={styles.title}>{title}</h2>
 			<ul className={styles.list}>
 				{list.map(({ id, image, name }) => (

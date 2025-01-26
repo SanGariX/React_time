@@ -2,14 +2,16 @@ import { NavLink, useParams } from 'react-router-dom'
 import styles from './SideBar.module.css'
 import { useSelector } from 'react-redux'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
+import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 const SideBar = () => {
 	const { id: idParams } = useParams()
 	const { data: fetchData } = useSelector((state) => {
 		return state.categories
 	})
+
 	return (
 		<>
-			<aside className={styles.sidebar}>
+			<aside className={`content ${SetTimeout(fetchData) && 'loaded'} ${styles.sidebar} `}>
 				<h4 className={styles.title}>CATEGORIES</h4>
 				<nav className={styles.nav}>
 					<nav className={styles['navigation-categories']}>

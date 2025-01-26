@@ -1,9 +1,10 @@
 import styles from './Banner.module.css'
 import bannerImg from '../../assets/Post/banner.jpg'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
-const Banner = () => {
+import SetTimeout from '../../utils/FragmentCod/SetTimeout'
+const Banner = (status) => {
 	return (
-		<section className={styles.banner}>
+		<section className={`content ${SetTimeout(status) && 'loaded'} ${styles.banner}`}>
 			<div className={styles.left}>
 				<p className={styles.content}>
 					NEW YEAR <span>SELL</span>

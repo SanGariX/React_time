@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import styles from "./Skeleton.module.css"
+import { useEffect, useState } from 'react';
 const Card = () => {
+    const [timeout, setTimeout] = useState(false)
+    useEffect(() => {
+      setTimeout(() => {
+        setTimeout(true)
+      }, 100)
+    }, [])
   return (
-    <StyledWrapper className={styles.wrapper_Error}>
+    <StyledWrapper className={`content ${timeout && 'loaded'} ${styles.wrapper_Error}`}>
       <div >
         <div className="card">
           <svg className="wave" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">

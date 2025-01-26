@@ -3,14 +3,15 @@ import styles from './Products.module.css'
 import { useSelector } from 'react-redux'
 import { filterImg } from '../../utils/FragmentCod/ImageRec'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
+import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 const Products = ({ title, products = [], amount, style = {} }) => {
 	const { data } = useSelector((state) => {
 		return state.categories
 	})
 	const list = products.filter((_, i) => i < amount)
 
-	const categoriesClickLink = async (nameCat) => {
-		if(data.length){
+	const categoriesClickLink = (nameCat) => {
+		if(data?.length){
 			for (const { name, id } of data) {
 				if (name === nameCat) {
 					return id
@@ -19,7 +20,7 @@ const Products = ({ title, products = [], amount, style = {} }) => {
 		}
 	}
 	return (
-		<section className={styles.products} style={style}>
+		<section className={`content ${SetTimeout(data) && 'loaded'} ${styles.products}`} style={style}>
 			{title && <h2 className={styles.title}>{title}</h2>}
 			<div className={styles.list}>
 				{list.length &&

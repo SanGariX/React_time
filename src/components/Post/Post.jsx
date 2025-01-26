@@ -8,14 +8,15 @@ import slider1 from '../../assets/Post/slide1.png'
 import slider2 from '../../assets/Post/slide2.png'
 import slider3 from '../../assets/Post/slide3.png'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
-const Post = () => {
+import SetTimeout from '../../utils/FragmentCod/SetTimeout'
+const Post = (status) => {
 	const imageSlider = [
 		{ img: slider1, title: 'Sel 19% by NOW!', subTitle: 'Black Fride by your fist PC' },
 		{ img: slider2, title: 'Sel 51% by NOW!', subTitle: 'Black Fride by your fist PC' },
 		{ img: slider3, title: 'Sel 83% by NOW!', subTitle: 'Black Fride by your fist PC' },
 	]
 	return (
-		<section className={styles.home}>
+		<section className={`content ${SetTimeout(status) && 'loaded'} ${styles.home}`}>
 			<div className={styles.products}>
 				<Swiper
 					modules={[Navigation]}
