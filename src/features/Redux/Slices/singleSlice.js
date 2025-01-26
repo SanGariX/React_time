@@ -10,7 +10,7 @@ export const asyncFetchItemProduct = createAsyncThunk(
 	'data/respons/asyncFetchItemProduct',
 	async (id, thunkApi) => {
 		try {
-			const respons = await axios(`${BASE_URL}/product/${id}`)
+			const respons = await axios(`${BASE_URL}/products/${id}`)
 			return respons.data
 		} catch (err) {
 			console.log(err)

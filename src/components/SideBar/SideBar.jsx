@@ -11,7 +11,6 @@ const SideBar = () => {
 		return state.categories
 	})
 	const handleClick = () => {
-		console.log(btnClick)
 		if (btnClick) {
 			setBtnClick(false)
 		} else {

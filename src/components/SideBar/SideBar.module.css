@@ -11,6 +11,8 @@
 
 .nav {
 	margin-bottom: auto;
+	height: 400px;
+	overflow-y: auto;
 }
 .title {
 	font-size: 23px;
