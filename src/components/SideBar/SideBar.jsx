@@ -3,15 +3,28 @@ import styles from './SideBar.module.css'
 import { useSelector } from 'react-redux'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
 import SetTimeout from '../../utils/FragmentCod/SetTimeout'
+import { useState } from 'react'
 const SideBar = () => {
+	const [btnClick, setBtnClick] = useState(false)
 	const { id: idParams } = useParams()
 	const { data: fetchData } = useSelector((state) => {
 		return state.categories
 	})
-
+	const handleClick = () => {
+		console.log(btnClick)
+		if (btnClick) {
+			setBtnClick(false)
+		} else {
+			setBtnClick(true)
+		}
+	}
 	return (
 		<>
-			<aside className={`content ${SetTimeout(fetchData) && 'loaded'} ${styles.sidebar} `}>
+			<aside
+				className={`content ${SetTimeout() && 'loaded'} ${
+					btnClick ? styles.activate : ''
+				} ${styles.sidebar} `}
+			>
 				<h4 className={styles.title}>CATEGORIES</h4>
 				<nav className={styles.nav}>
 					<nav className={styles['navigation-categories']}>
@@ -40,6 +53,14 @@ const SideBar = () => {
 					</a>
 				</footer>
 			</aside>
+			<button
+				onClick={() => {
+					handleClick()
+				}}
+				className={styles.btn_wrap}
+			>
+				{'>'}
+			</button>
 		</>
 	)
 }

@@ -58,3 +58,24 @@
 	right: -270px;
 	rotate: -40deg;
 }
+@media (max-width:650px){
+	.slider_subTitle{
+		display: none;
+	}
+}
+@media (max-width:560px){
+	.products{
+		max-height: 400px;
+		
+	}
+	.btn_slider{
+		margin: 50px 0;
+	}
+	.image{
+		width: 300px;
+		margin: 80px 0;
+	}
+	.slider_title{
+		display: none;
+	}
+}

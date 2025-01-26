@@ -24,3 +24,11 @@
 .viber{
     width: 30px;
 }
+@media (max-width:600px){
+    .footer{
+        display: flex;
+        gap: 20px 50px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

@@ -52,3 +52,23 @@
     font-style: normal !important;
     color: rgb(183, 0, 0); 
 }
+@media (max-width:800px){
+    .banner{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        height: 130vw;
+    }
+    .left{
+        padding: 20px;
+    }
+    .discount{
+        font-size: 25px;
+    }
+    .content{
+        font-size: 40px;
+    }
+    .content span{
+        font-size: 60px;
+    }
+}

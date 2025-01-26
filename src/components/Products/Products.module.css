@@ -61,6 +61,7 @@
     color: rgb(0, 136, 82);
 }
 .info{
+    width: 100%;
     display: flex;
     align-items: center;    
     background-color: #181818;
@@ -69,6 +70,9 @@
 } 
 .purchases{
     font-size: 17px;
+    max-width: 110px;
+    text-align: center;
+    line-height: 1.5;
     color: rgb(77, 77, 77);
 }
 .product{
@@ -84,4 +88,23 @@
     display: flex;
     justify-content: center;
     padding-bottom: 20px;
+}
+.box_price{
+    width: 100%;
+}
+@media(max-width:1300px){
+    .list{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+    }
+    .image_box{
+        width: 300px;
+        align-items: center;
+        justify-content: center;
+    }
+    .product{
+        width: 300px;
+    }
 }

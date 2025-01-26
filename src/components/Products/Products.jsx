@@ -18,9 +18,9 @@ const Products = ({ title, products = [], amount, style = {} }) => {
 				}
 			}
 		}
-	}
+	} 
 	return (
-		<section className={`content ${SetTimeout(data) && 'loaded'} ${styles.products}`} style={style}>
+		<section className={`content ${SetTimeout() && 'loaded'} ${styles.products}`} style={style}>
 			{title && <h2 className={styles.title}>{title}</h2>}
 			<div className={styles.list}>
 				{list.length &&
@@ -33,7 +33,7 @@ const Products = ({ title, products = [], amount, style = {} }) => {
 								<h3 className={styles.title_wrapper}>{title}</h3>
 							</Link>
 
-							<div>
+							<div className={styles.box_price}>
 								<Link
 									className={styles.cat_link}
 									to={`/category/${categoriesClickLink(cat)}`}

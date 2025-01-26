@@ -5,7 +5,7 @@ import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 const Categories = ({ title, products = [], amount }) => {
 	const list = products.filter((_, i) => i < amount)
 	return (
-		<section className={`content ${SetTimeout(products) && 'loaded'} ${styles.section}`}>
+		<section className={`content ${SetTimeout() && 'loaded'} ${styles.section}`}>
 			<h2 className={styles.title}>{title}</h2>
 			<ul className={styles.list}>
 				{list.map(({ id, image, name }) => (
