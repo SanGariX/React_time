@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
+import { filterImg } from '../../utils/FragmentCod/ImageRec'
 const Desc = ({ data }) => {
 	const [currentImg, setCurrentImg] = useState(data)
 	useEffect(()=>{
 		if(data){
-			setCurrentImg(data.images[0])
+			setCurrentImg(filterImg(data.images[0]))
 		}
 	}, [data])
 	const { data: categoriesData } = useSelector((state) => {
@@ -37,9 +38,9 @@ const Desc = ({ data }) => {
 							<li key={i} className={styles.list_item}>
 								<img
 									onClick={() => {
-										setCurrentImg(item)
+										setCurrentImg(filterImg(item))
 									}}
-									src={item}
+									src={filterImg(item)}
 									className={styles.img_list}
 								/>
 							</li>
