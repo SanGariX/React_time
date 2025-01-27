@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import styles from './Product.module.css'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncFetchItemProduct } from '../../features/Redux/Slices/singleSlice'
-import { useNavigate, useParams } from 'react-router-dom'
-// { title, price, images }
+import SideBar from '../../components/SideBar/SideBar'
+import Desc from '../../components/Desc/Desc'
 const Product = () => {
 	const [error, setError] = useState(false)
 	const [timer, setTimer] = useState(5)
-	const { id } = useParams()
 	const navigate = useNavigate()
+	const { id } = useParams()
+	const { singleProduct: {data, status}, categories: {status: statusCategory} } = useSelector((state) => state)
 	const dispatch = useDispatch()
-	const { data, status } = useSelector((state) => state.singleProduct)
-
 	useEffect(() => {
 		if (id) {
 			dispatch(asyncFetchItemProduct(id))
@@ -31,24 +31,12 @@ const Product = () => {
 		}, 1000)
 		return () => clearInterval(namesInterval)
 	}, [status, timer])
-	let currentImg = !data ? null : data.images.length ? data.images[0] : null
-	console.log(currentImg)
-	const images = !data ? null : data.images.length ? data.images : null
 	return (
 		<>
-			<section className={styles.product}>
-				<div className={styles.images}>
-					<img src={currentImg} />
-					<ul className={styles.list_img}>
-						{data.images &&
-							images.map((item, i) => (
-								<li key={i} className={styles.list_item}>
-									<img src={item} />
-								</li>
-							))}
-					</ul>
-				</div>
-			</section>
+			<div className={styles['wrapper-bottom_header']}>
+				{!error && <SideBar status={statusCategory}/>}
+				{!error && <Desc data={data} status={status} />}
+			</div>
 			{error && (
 				<div className={styles.wrapper_error}>
 					<h1 className={styles.error}>

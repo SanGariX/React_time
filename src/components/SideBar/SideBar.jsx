@@ -1,12 +1,12 @@
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './SideBar.module.css'
 import { useSelector } from 'react-redux'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
 import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 import { useState } from 'react'
-const SideBar = () => {
+const SideBar = ({id:idParams = null}) => {
 	const [btnClick, setBtnClick] = useState(false)
-	const { id: idParams } = useParams()
+	
 	const { data: fetchData } = useSelector((state) => {
 		return state.categories
 	})

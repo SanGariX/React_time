@@ -1,0 +1,119 @@
+.product{
+    padding: 30px;
+}
+.images{
+    display: grid;
+    grid-template-columns: 1.2fr 0.3fr 1.2fr;
+    gap: 30px;
+    height: 540px;
+}
+.box_main_img{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.image_main{
+    width: 100%;
+    border-radius: 20px;
+}
+.list_img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 8%;
+}
+.list_item{
+    width: 100%;
+    cursor: pointer;
+}
+.img_list{
+    width: 100%;
+    border-radius: 14px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 20px;
+    gap: 20px;
+}
+.title{
+    font-size: 35px;
+}
+.price{
+    font-size: 27px;
+}
+.price span{
+    background-color: rgb(71, 74, 76);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+.desc{
+    font-size: 20px;
+}
+.category{
+    font-size: 20px;
+}
+.category span{
+    background-color: rgb(71, 74, 76);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+.btn_inner{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: auto;
+    margin-bottom: 30px;
+}
+.btn_add{
+    background-color: rgb(71, 74, 76);
+    font-size: 20px;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+@media (max-width: 960px){
+    .images{
+        grid-template-columns: 1.2fr .4fr;
+        grid-template-rows: repeat(2, 1fr);
+        height: auto;
+    }
+    .info{
+        padding: 20px;
+        grid-column: 1/3;
+    }
+    .list_img{
+        gap: 40px;
+        max-height: 550px ;
+    }
+    .list_item{
+        width: auto;
+    }
+    .img_list{
+        max-width: 150px;
+    }
+}
+@media (max-width: 560px){
+    .images{
+        grid-template-rows: 90vw auto 1fr;
+        grid-template-columns: 1fr;
+        gap: 20px 0;
+    }
+    .list_img{
+        flex-direction: row;
+        grid-row: 2/3;
+        grid-column: 1/3;
+    }
+    .btn_inner{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .product{
+        padding: 5px;
+    }
+    .info{
+        padding: 5px;
+        margin: 0;
+    }
+}

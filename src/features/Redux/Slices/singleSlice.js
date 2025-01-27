@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { BASE_URL } from '../../../utils/Constant/fetchConstant'
 const initialState = {
-	data: [],
+	data: "",
 	status: '',
 	id: 0,
 }
@@ -24,16 +24,14 @@ const singleSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(asyncFetchItemProduct.rejected, (state, action) => {
-				state.data = action.payload
+			.addCase(asyncFetchItemProduct.rejected, (state) => {
 				state.status = 'rejected'
 			})
 			.addCase(asyncFetchItemProduct.fulfilled, (state, action) => {
 				state.data = action.payload
 				state.status = 'fulfilled'
 			})
-			.addCase(asyncFetchItemProduct.pending, (state, action) => {
-				state.data = action.payload
+			.addCase(asyncFetchItemProduct.pending, (state) => {
 				state.status = 'pending'
 			})
 	},

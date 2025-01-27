@@ -13,3 +13,18 @@
     justify-content: center;
     height: 100vh;
 }
+.images{
+    display: flex;
+}
+.wrapper-bottom_header{
+    display: grid;
+    grid-template-columns: minmax(230px,.28fr) 1fr;
+    margin-bottom: auto;
+    margin: 20px 0;
+    gap: 30px;
+}
+@media(max-width:1300px){
+    .wrapper-bottom_header{
+        display: block;
+    }
+}
