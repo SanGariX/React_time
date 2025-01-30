@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import styles from './Desc.module.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
 import { filterImg } from '../../utils/FragmentCod/ImageRec'
+import { addItemCart, addItemFavorites } from '../../features/Redux/Slices/userSlice'
 const Desc = ({ data }) => {
 	const [currentImg, setCurrentImg] = useState(data)
+	const dispatch = useDispatch()
 	useEffect(()=>{
 		if(data){
 			setCurrentImg(filterImg(data.images[0]))
@@ -23,6 +25,9 @@ const Desc = ({ data }) => {
 				}
 			}
 		}
+	}
+	const addToCart = (item)=>{
+		
 	}
 	return (
 		<section
@@ -49,7 +54,7 @@ const Desc = ({ data }) => {
 				<div className={styles.info}>
 					<h2 className={styles.title}>{data.title}</h2>
 					<p className={styles.price}>
-						Price: <span>{data.price}</span>
+						Price: <span>{data.price} $</span>
 					</p>
 					<p className={styles.desc}>{data.description}</p>
 					<p className={styles.category}>
@@ -65,8 +70,8 @@ const Desc = ({ data }) => {
 						</span>
 					</p>
 					<div className={styles.btn_inner}>
-						<button className={styles.btn_add}>Add to cart</button>
-						<button className={styles.btn_add}>Add to favorites</button>
+						<button onClick={()=>{dispatch(addItemCart(data))}}  className={styles.btn_add}>Add to cart</button>
+						<button onClick={()=>{dispatch(addItemFavorites(data))}}  className={styles.btn_add}>Add to favorites</button>
 					</div>
 					<div className={styles.inner_link}>
 						<Link to={'/'}></Link>

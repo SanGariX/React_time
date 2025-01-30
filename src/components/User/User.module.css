@@ -1,0 +1,73 @@
+.wrapper{
+    position: fixed;
+    z-index: 99;
+    inset: 20px 0 auto 0;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #181818 ;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    border-radius: 20px;
+}
+.overlay{   
+    inset: 0 0 0 0;
+    position: fixed;
+    background-color: black;
+    opacity: .3;
+    z-index: 98;
+}
+.error{
+    background-color: rgb(115, 0, 0);
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+.close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+.title{
+    font-size: 35px;
+    text-align: center;
+}
+.form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+.group{
+    width: 100%;
+}
+input{
+    width: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    background-color: #323232;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.form_btn{
+    background-color: #6B3EB8;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.account{
+    color: #8f8f8f;
+    cursor: pointer;
+}
+.link{
+    text-align: center;
+}

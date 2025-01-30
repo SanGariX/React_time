@@ -6,6 +6,7 @@ import RoutesApp from './utils/routes/Routes'
 import { useEffect } from 'react'
 import { asyncFetchCategories } from './features/Redux/Slices/categoriesSlice.js'
 import { asyncFetchProducts } from './features/Redux/Slices/productsSlice.js'
+import UserForm from './components/User/UserForm.jsx'
 function App() {
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
 		<>
 			<div className='container'>
 				<Header />
+				<UserForm/>
 				<RoutesApp />
 				<Footer />
 			</div>

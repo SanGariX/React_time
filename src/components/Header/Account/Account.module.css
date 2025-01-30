@@ -11,7 +11,12 @@
 .icon-cart img{
     width: 30px;
 }
-
+.favorites{
+    position: relative;
+}
+.cart{
+    position: relative;
+}
 .count{
     border-radius: 50%;
     background-color: #936DBC;  
