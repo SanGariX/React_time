@@ -10,6 +10,7 @@ const User = () => {
 		name: 'Guest',
 		avatar: avatar,
 	})
+	console.log(value.avatar)
 	useEffect(() => {
 		if(!currentUser) return 
 		setValue(currentUser)

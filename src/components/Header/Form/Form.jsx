@@ -16,8 +16,8 @@ const Form = () => {
 					value=''
 				/>
 			</div>
-			<div className={styles.box}>
-			</div>
+			{false && <div className={styles.box}>
+			</div>}
 		</form>
 	)
 }
