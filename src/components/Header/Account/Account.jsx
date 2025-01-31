@@ -13,13 +13,13 @@ const Account = () => {
 				<div className={styles['icon-fav']}>
 					<img src={favorite} alt='your favorite' />
 				</div>
-				<span className={styles.count}>{userCart.length}</span>
+				<span className={styles.count}>{userFavorite.length}</span>
 			</Link>
 			<Link to='/cart' className={styles.cart}>
 				<div className={styles['icon-cart']}>
 					<img src={cart} alt='your cart' />
 				</div>
-				<span className={styles.count}>{userFavorite.length}</span>
+				<span className={styles.count}>{userCart.length}</span>
 			</Link>
 		</div>
 	)

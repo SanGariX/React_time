@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import styles from './User.module.css'
 import UserSignupForm from './UserSignupForm'
 import { toggleForm } from '../../features/Redux/Slices/userSlice'
+import UserLoginForm from './UserLoginForm'
 const UserForm = () => {
-	const { showForm } = useSelector(({ user }) => user)
+	const { showForm, formType } = useSelector(({ user }) => user)
     const dispatch = useDispatch()
     const handleClickClose = ()=>{
         dispatch(toggleForm())
@@ -13,7 +14,7 @@ const UserForm = () => {
 			{showForm ? (
 				<>
 					<div onClick={handleClickClose} className={styles.overlay}></div>
-					<UserSignupForm />
+					{formType === "signup" ? <UserSignupForm /> : <UserLoginForm/>}
 				</>
 			) : (
 				<></>

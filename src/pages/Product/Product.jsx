@@ -12,17 +12,23 @@ const Product = () => {
 	const [timer, setTimer] = useState(5)
 	const navigate = useNavigate()
 	const { id } = useParams()
+	// getting data from redux
 	const {
 		singleProduct: { data, status },
 		categories: { status: statusCategory },
 		products: { related, status: productsStatus },
 	} = useSelector((state) => state)
 	const dispatch = useDispatch()
+	// request for a product with a specific id
+	// _____________
 	useEffect(() => {
 		if (id) {
 			dispatch(asyncFetchItemProduct(id))
 		}
 	}, [dispatch, id])
+	// when an error occurs on the backend or 
+	// there is no id, then return to the main page after a while
+	// _____________
 	useEffect(() => {
 		if (
 			status !== 'rejected' &&
@@ -42,6 +48,8 @@ const Product = () => {
 		}, 1000)
 		return () => clearInterval(namesInterval)
 	}, [status, timer])
+	// a component with product recommendations from redux
+	// __________________
 	useEffect(() => {
 		if (data) {
 			dispatch(getRelatedProducts({ idCategory: data.category.id }))

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { BASE_URL } from '../../../utils/Constant/fetchConstant'
+import { findItemFavoriteandCart } from '../../../utils/FragmentCod/findItemFavoriteandCart'
 const initialState = {
 	currentUser: null,
 	cart: [],
@@ -10,12 +11,35 @@ const initialState = {
 	formType: 'signup',
 	showForm: false,
 }
+const addCurrentUser = (state, action) => {
+	state.currentUser = action.payload
+	state.status = 'fulfilled'
+}
 export const creatUser = createAsyncThunk(
 	'users/creatUser',
 	async (payload, thunkApi) => {
 		try {
-			const respons = await axios.post(`${BASE_URL}/users`, payload)
+			const respons = await axios.post(`${BASE_URL}/users/`, payload)
 			return respons.data
+		} catch (err) {
+			console.log(err)
+			return thunkApi.rejectWithValue(err)
+		}
+	}
+)
+export const loginUser = createAsyncThunk(
+	'users/loginUser',
+	async (payload, thunkApi) => {
+		try {
+			const respons = await axios.post(`${BASE_URL}/auth/login`, payload)
+			const option = {
+				method: 'GET',
+				headers: {
+					Authorization: `Bearer ${respons.data.access_token}`,
+				},
+			}
+			const login = await axios(`${BASE_URL}/auth/profile`, option)
+			return login.data
 		} catch (err) {
 			console.log(err)
 			return thunkApi.rejectWithValue(err)
@@ -26,45 +50,28 @@ const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		addItemCart: (state, { payload }) => {
-			let newCart = [...state.cart]
-			const index = newCart.findIndex((item) => item.id === payload.id)
-
-			if (index !== -1) {
-				newCart[index] = {
-					...newCart[index],
-					quantity: newCart[index].quantity + 1,
-				}
-			} else {
-				newCart.push({ ...payload, quantity: 1 })
+		addItem: (state, { payload }) => {
+			if (!state.currentUser) {
+				state.showForm = true
+				return
 			}
-			state.cart = newCart
-		},
-		addItemFavorites: (state, { payload }) => {
-			let newFavorites = [...state.favorites]
-			const index = newFavorites.findIndex((item) => item.id === payload.id)
-
-			if (index !== -1) {
-				newFavorites[index] = {
-					...newFavorites[index],
-					quantity: newFavorites[index].quantity + 1,
-				}
-			} else {
-				newFavorites.push({ ...payload, quantity: 1 })
-			}
-			state.favorites = newFavorites
+			let newArr =
+				payload.type === 'cart' ? [...state.cart] : [...state.favorites]
+			const result = findItemFavoriteandCart(newArr, payload.data)
+			payload.type === 'cart' ? state.cart = result : state.favorites = result
 		},
 		toggleForm: (state, { payload }) => {
 			state.showForm = payload
 		},
+		toggleTypeForm: (state, { payload }) => {
+			state.formType = payload
+		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(creatUser.fulfilled, (state, action) => {
-			state.data = action.payload
-			state.status = 'fulfilled'
-		})
+		builder.addCase(creatUser.fulfilled, addCurrentUser)
+		builder.addCase(loginUser.fulfilled, addCurrentUser)
 	},
 })
 
 export default userSlice.reducer
-export const { addItemCart, addItemFavorites, toggleForm } = userSlice.actions
+export const { addItem, toggleForm, toggleTypeForm } = userSlice.actions

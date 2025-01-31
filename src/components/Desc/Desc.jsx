@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 import withSkeleton from '../../utils/Hocs/withSkeleton'
 import { filterImg } from '../../utils/FragmentCod/ImageRec'
-import { addItemCart, addItemFavorites } from '../../features/Redux/Slices/userSlice'
+import { addItem } from '../../features/Redux/Slices/userSlice'
 const Desc = ({ data }) => {
 	const [currentImg, setCurrentImg] = useState(data)
 	const dispatch = useDispatch()
@@ -25,9 +25,6 @@ const Desc = ({ data }) => {
 				}
 			}
 		}
-	}
-	const addToCart = (item)=>{
-		
 	}
 	return (
 		<section
@@ -70,8 +67,14 @@ const Desc = ({ data }) => {
 						</span>
 					</p>
 					<div className={styles.btn_inner}>
-						<button onClick={()=>{dispatch(addItemCart(data))}}  className={styles.btn_add}>Add to cart</button>
-						<button onClick={()=>{dispatch(addItemFavorites(data))}}  className={styles.btn_add}>Add to favorites</button>
+						<button onClick={()=>{dispatch(addItem({data: data, type: "cart"}))}}  
+								className={styles.btn_add}>
+							Add to cart
+						</button>
+						<button onClick={()=>{dispatch(addItem({data: data, type: "favorites"}))}}  
+								className={styles.btn_add}>
+							Add to favorites
+						</button>
 					</div>
 					<div className={styles.inner_link}>
 						<Link to={'/'}></Link>
