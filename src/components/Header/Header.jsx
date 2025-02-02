@@ -1,6 +1,5 @@
 import styles from './Header.module.css'
-
-import Logo from '../Logo/Logo'
+import Logo from '../BetweenComponents/Logo/Logo'
 import User from './User/User'
 import Form from './Form/Form'
 import Account from './Account/Account'

@@ -20,6 +20,7 @@ export const creatUser = createAsyncThunk(
 	async (payload, thunkApi) => {
 		try {
 			const respons = await axios.post(`${BASE_URL}/users/`, payload)
+			localStorage.setItem("user", JSON.stringify(respons.data))
 			return respons.data
 		} catch (err) {
 			console.log(err)
@@ -39,7 +40,26 @@ export const loginUser = createAsyncThunk(
 				},
 			}
 			const login = await axios(`${BASE_URL}/auth/profile`, option)
+			localStorage.setItem("user", JSON.stringify(login.data))
 			return login.data
+		} catch (err) {
+			console.log(err)
+			return thunkApi.rejectWithValue(err)
+		}
+	}
+)
+export const updateUser = createAsyncThunk(
+	'users/updateUser',
+	async (payload, thunkApi) => {
+		try {
+			const respons = await axios.put(`${BASE_URL}/users/${payload.id}`, {
+				name: payload.name,
+				password: payload.password,
+				email: payload.email,
+				avatar: payload.avatar,
+			})
+			localStorage.setItem("user", JSON.stringify(payload))
+			return respons.data
 		} catch (err) {
 			console.log(err)
 			return thunkApi.rejectWithValue(err)
@@ -50,6 +70,7 @@ const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
+		// add in cart and favorite
 		addItem: (state, { payload }) => {
 			if (!state.currentUser) {
 				state.showForm = true
@@ -60,18 +81,32 @@ const userSlice = createSlice({
 			const result = findItemFavoriteandCart(newArr, payload.data)
 			payload.type === 'cart' ? state.cart = result : state.favorites = result
 		},
+		// off form modal
 		toggleForm: (state, { payload }) => {
 			state.showForm = payload
 		},
+		// change form login and creat
 		toggleTypeForm: (state, { payload }) => {
 			state.formType = payload
 		},
+		// auto regist from local storage
+		localUserStorage: (state)=>{
+			state.currentUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null
+		},
+		resetAccount: (state)=>{
+			state.currentUser = null
+			localStorage.clear()
+		}
 	},
 	extraReducers: (builder) => {
 		builder.addCase(creatUser.fulfilled, addCurrentUser)
 		builder.addCase(loginUser.fulfilled, addCurrentUser)
+		builder.addCase(updateUser.fulfilled, addCurrentUser)
+		.addCase(updateUser.rejected, (state)=>{
+			state.currentUser = null
+		})
 	},
 })
 
 export default userSlice.reducer
-export const { addItem, toggleForm, toggleTypeForm } = userSlice.actions
+export const { addItem, toggleForm, toggleTypeForm, localUserStorage, resetAccount } = userSlice.actions

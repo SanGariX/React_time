@@ -1,4 +1,4 @@
-import Logo from '../Logo/Logo'
+import Logo from '../BetweenComponents/Logo/Logo'
 import styles from './Footer.module.css'
 import instagram from "../../assets/logo/instagram.svg"
 import viber from "../../assets/logo/viber.svg"

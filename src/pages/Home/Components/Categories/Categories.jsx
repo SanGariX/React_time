@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './Categories.module.css'
-import withSkeleton from '../../utils/Hocs/withSkeleton'
-import SetTimeout from '../../utils/FragmentCod/SetTimeout'
+import withSkeleton from '../../../../utils/Hocs/withSkeleton'
+import SetTimeout from '../../../../utils/FragmentCod/SetTimeout'
 const Categories = ({ title, products = [], amount }) => {
 	const list = products.filter((_, i) => i < amount)
 	return (

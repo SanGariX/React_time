@@ -23,16 +23,14 @@ const categoriesSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(asyncFetchCategories.rejected, (state, action) => {
-				state.data = action.payload
+			.addCase(asyncFetchCategories.rejected, (state) => {
 				state.status = 'rejected'
 			})
 			.addCase(asyncFetchCategories.fulfilled, (state, action) => {
 				state.data = action.payload
 				state.status = 'fulfilled'
 			})
-			.addCase(asyncFetchCategories.pending, (state, action) => {
-				state.data = action.payload
+			.addCase(asyncFetchCategories.pending, (state) => {
 				state.status = 'pending'
 			})
 	},

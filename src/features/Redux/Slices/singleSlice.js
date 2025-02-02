@@ -4,7 +4,6 @@ import { BASE_URL } from '../../../utils/Constant/fetchConstant'
 const initialState = {
 	data: "",
 	status: '',
-	id: 0,
 }
 export const asyncFetchItemProduct = createAsyncThunk(
 	'data/respons/asyncFetchItemProduct',

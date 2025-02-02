@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Logo.module.css'
-import logo from '../../assets/logo/Logo.svg'
+import logo from '../../../assets/logo/Logo.svg'
 const Logo = () => {
 	return (
 		<div className={styles.logo}>

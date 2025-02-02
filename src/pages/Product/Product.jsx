@@ -16,7 +16,7 @@ const Product = () => {
 	const {
 		singleProduct: { data, status },
 		categories: { status: statusCategory },
-		products: { related, status: productsStatus },
+		products: { related, list, status: productsStatus },
 	} = useSelector((state) => state)
 	const dispatch = useDispatch()
 	// request for a product with a specific id
@@ -54,7 +54,7 @@ const Product = () => {
 		if (data) {
 			dispatch(getRelatedProducts({ idCategory: data.category.id }))
 		}
-	}, [data, dispatch])
+	}, [data, dispatch, list])
 	return (
 		<>
 			<div className={styles['wrapper-bottom_header']}>

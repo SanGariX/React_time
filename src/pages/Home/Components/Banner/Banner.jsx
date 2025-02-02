@@ -1,7 +1,7 @@
 import styles from './Banner.module.css'
-import bannerImg from '../../assets/Post/banner.jpg'
-import withSkeleton from '../../utils/Hocs/withSkeleton'
-import SetTimeout from '../../utils/FragmentCod/SetTimeout'
+import bannerImg from '../../../../assets/Post/banner.jpg'
+import withSkeleton from '../../../../utils/Hocs/withSkeleton'
+import SetTimeout from '../../../../utils/FragmentCod/SetTimeout'
 const Banner = () => {
 	return (
 		<section className={`content ${SetTimeout() && 'loaded'} ${styles.banner}`}>

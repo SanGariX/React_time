@@ -24,9 +24,11 @@ const productSlice = createSlice({
 	name: 'products',
 	initialState,
 	reducers: {
+		// filter for price
 		filterByPrice: (state, { payload }) => {
 			state.filtered = state.list.filter(({ price }) => price < payload)
 		},
+		//filter for category
 		getRelatedProducts: (state, { payload: {idCategory} }) => {
 			const list = state.list.filter(({ category: {id} }) => id === idCategory) 
 			state.related = shuffle(list)	

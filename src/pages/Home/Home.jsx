@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
-import Post from '../../components/Post/Post'
+import Post from './Components/Post/Post'
 import Products from '../../components/Products/Products'
 import SideBar from '../../components/SideBar/SideBar'
 import styles from './Home.module.css'
-import Categories from '../../components/Categories/Categories'
-import Banner from '../../components/Banner/Banner'
+import Categories from './components/Categories/Categories'
+import Banner from './Components/Banner/Banner'
 import { useEffect } from 'react'
 import { filterByPrice } from '../../features/Redux/Slices/productsSlice'
 const Home = () => {
