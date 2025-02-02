@@ -3,7 +3,7 @@ import Post from './Components/Post/Post'
 import Products from '../../components/Products/Products'
 import SideBar from '../../components/SideBar/SideBar'
 import styles from './Home.module.css'
-// import Categories from './Components/Categories/Categories'
+import Categories from './Components/Categories/Categories'
 import Banner from './Components/Banner/Banner'
 import { useEffect } from 'react'
 import { filterByPrice } from '../../features/Redux/Slices/productsSlice'
@@ -26,12 +26,12 @@ const Home = () => {
 				amount={5}
 				title={'Trending'}
 			/>
-			<Categories
+			{/* <Categories
 				status={categories.status}
 				products={categories.data}
 				amount={5}
 				title={'Worth seeing'}
-			/>
+			/> */}
 			<Banner status={categories.status} />
 			<Products
 				status={products.status}
