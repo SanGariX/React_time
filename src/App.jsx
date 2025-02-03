@@ -7,7 +7,10 @@ import { useEffect } from 'react'
 import { asyncFetchCategories } from './features/Redux/Slices/categoriesSlice.js'
 import { asyncFetchProducts } from './features/Redux/Slices/productsSlice.js'
 import UserForm from './components/User/UserForm.jsx'
-import { localUserStorage, loginUser } from './features/Redux/Slices/userSlice.js'
+import {
+	localUserStorage,
+	loginUser,
+} from './features/Redux/Slices/userSlice.js'
 function App() {
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -16,13 +19,16 @@ function App() {
 		dispatch(asyncFetchProducts())
 		// auth account from localStorage
 		dispatch(localUserStorage())
-		dispatch(loginUser(JSON.parse(localStorage.getItem("user"))))
+		if (localStorage.getItem('user')) {
+			const { email, password } = JSON.parse(localStorage.getItem('user'))
+			dispatch(loginUser({ email: email, password: password }))
+		}
 	}, [dispatch])
 	return (
 		<>
 			<div className='container'>
 				<Header />
-				<UserForm/>
+				<UserForm />
 				<RoutesApp />
 				<Footer />
 			</div>

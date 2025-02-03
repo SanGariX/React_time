@@ -40,6 +40,7 @@ export const loginUser = createAsyncThunk(
 				},
 			}
 			const login = await axios(`${BASE_URL}/auth/profile`, option)
+			localStorage.clear()
 			localStorage.setItem("user", JSON.stringify(login.data))
 			return login.data
 		} catch (err) {

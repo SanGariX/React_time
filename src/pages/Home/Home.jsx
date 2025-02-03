@@ -26,12 +26,12 @@ const Home = () => {
 				amount={5}
 				title={'Trending'}
 			/>
-			{/* <Categories
+			<Categories
 				status={categories.status}
 				products={categories.data}
 				amount={5}
 				title={'Worth seeing'}
-			/> */}
+			/>
 			<Banner status={categories.status} />
 			<Products
 				status={products.status}
