@@ -4,18 +4,20 @@ import { useEffect, useState } from 'react'
 import { filterProduct } from '../../../features/Redux/Slices/filterSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useDebounce } from '../../../utils/Huks/useDebounce'
 const Form = () => {
 	const [searchValue, setSearchValue] = useState('')
 	const { status, name } = useSelector(({ filter }) => filter)
 	const dispatch = useDispatch()
+	const valueSearch = useDebounce(searchValue, 300)
 	const handleSearch = ({ target: { value } }) => {
 		setSearchValue(value)
 	}
 	useEffect(() => {
-		if (searchValue) {
-			dispatch(filterProduct({ title: searchValue }))
+		if (valueSearch) {
+			dispatch(filterProduct({ title: valueSearch }))
 		}
-	}, [searchValue])
+	}, [valueSearch])
 	return (
 		<form className={styles.form}>
 			<div className={styles.icon}>
@@ -31,7 +33,7 @@ const Form = () => {
 					value={searchValue}
 				/>
 			</div>
-			{!!searchValue && (
+			{!!valueSearch && (
 				<div className={styles.box}>
 					{status === 'pending' ? (
 						<p className={styles.box_status}>Pending...</p>
