@@ -36,7 +36,7 @@
 	text-align: center;
 }
 .wrapper_box {
-	height: 200px;
+	max-height: 200px;
 	overflow-y: auto;
     display: flex;
     flex-direction: column;
