@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import SideBar from '../../components/SideBar/SideBar'
 import styles from './Category.module.css'
 import SingleCategory from './Components/SingleCategory'
-import FilterProduct from './Components/filterProduct'
+import FilterProduct from './Components/FilterProduct'
 import Post from '../../components/Post/Post'
 const Category = () => {
 	const { id: idParams } = useParams()
