@@ -10,7 +10,7 @@ const FilterProduct = () => {
 		title: '',
 		price_min: '',
 		price_max: '',
-		categoryId: id,
+		categoryId: id, 
 	}
 	const [params, setParams] = useState(defaultParams)
 	useEffect(() => {

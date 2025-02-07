@@ -13,7 +13,7 @@ const SingleCategory = () => {
 		dispatch(filterProduct({ categoryId: id }))
 	}, [id])
 	return (
-		<>
+		<> 
 			<section className={styles.wrapper}>
 				<h2 className={styles.title}>{!!name.length && name[0]?.category.name}</h2>
 				{status === 'pending' ? (
