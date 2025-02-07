@@ -23,6 +23,7 @@
 .image_box {
 	width: 100%;
 	height: auto;
+    padding: 10px;
 }
 .image {
 	width: 100%;
@@ -37,6 +38,11 @@
     font-size: 25px;
     padding: 20px 10px;
     color: #d3d3d3;
+    max-height: 220px;
+    overflow: hidden;
+}
+.link_boxmain{
+    padding: 20px;
 }
 .cat{
     font-size: 23px;
@@ -84,7 +90,7 @@
     height: 550px;
     background-color: #212121;
     border-radius: 10px;
-    width: 19%;
+    width: 300px;
 }
 .cat_link{
     display: flex;

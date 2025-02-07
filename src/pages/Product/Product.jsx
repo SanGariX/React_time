@@ -56,7 +56,7 @@ const Product = () => {
 		}
 	}, [data, dispatch, list])
 	return (
-		<>
+		<main className={styles.main}>
 			<div className={styles['wrapper-bottom_header']}>
 				{!error && <SideBar status={statusCategory} />}
 				{!error && <Desc data={data} status={status} />}
@@ -74,7 +74,7 @@ const Product = () => {
 					</h1>
 				</div>
 			)}
-		</>
+		</main>
 	)
 }
 

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import Post from './Components/Post/Post'
+import Post from '../../components/Post/Post'
 import Products from '../../components/Products/Products'
 import SideBar from '../../components/SideBar/SideBar'
 import styles from './Home.module.css'

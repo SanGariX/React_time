@@ -1,0 +1,25 @@
+.filters{
+    display: flex;
+    margin: 0 auto;
+    gap: 20px;
+    width: 50%;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color:#1e1e1e ;
+    padding: 20px;
+    border-radius: 20px;
+}
+.title_filter{
+    font-size: 30px;
+    text-align: center;
+}
+.btn_filter{
+    background-color: #2e2e2e;
+    padding: 10px 20px;
+    border-radius: 10px;
+}

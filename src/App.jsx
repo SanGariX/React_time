@@ -8,7 +8,6 @@ import { asyncFetchCategories } from './features/Redux/Slices/categoriesSlice.js
 import { asyncFetchProducts } from './features/Redux/Slices/productsSlice.js'
 import UserForm from './components/User/UserForm.jsx'
 import {
-	localUserStorage,
 	loginUser,
 } from './features/Redux/Slices/userSlice.js'
 function App() {
@@ -18,7 +17,6 @@ function App() {
 		dispatch(asyncFetchCategories())
 		dispatch(asyncFetchProducts())
 		// auth account from localStorage
-		dispatch(localUserStorage())
 		if (localStorage.getItem('user')) {
 			const { email, password } = JSON.parse(localStorage.getItem('user'))
 			dispatch(loginUser({ email: email, password: password }))

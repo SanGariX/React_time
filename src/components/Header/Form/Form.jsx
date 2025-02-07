@@ -42,7 +42,7 @@ const Form = () => {
 					) : (
 						<div className={styles.wrapper_box}>
 							{name.map(({ id, title, images }) => (
-								<div key={id}>
+								<div onClick={()=>{setSearchValue("")}} key={id}>
 									<Link className={styles.box_item} to={`/product/${id}`}>
 										<img src={images[0]} className={styles.images_box} />
 										<p>{title}</p>

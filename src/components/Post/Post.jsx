@@ -4,11 +4,11 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-import slider1 from '../../../../assets/Post/slide1.png'
-import slider2 from '../../../../assets/Post/slide2.png'
-import slider3 from '../../../../assets/Post/slide3.png'
-import withSkeleton from '../../../../utils/Hocs/withSkeleton'
-import SetTimeout from '../../../../utils/FragmentCod/SetTimeout'
+import slider1 from '../../assets/Post/slide1.png'
+import slider2 from '../../assets/Post/slide2.png'
+import slider3 from '../../assets/Post/slide3.png'
+import withSkeleton from '../../utils/Hocs/withSkeleton'
+import SetTimeout from '../../utils/FragmentCod/SetTimeout'
 const Post = () => {
 	const imageSlider = [
 		{ img: slider1, title: 'Sel 19% by NOW!', subTitle: 'Black Fride by your fist PC' },

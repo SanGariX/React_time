@@ -20,13 +20,13 @@ const Products = ({ title, products = [], amount = 5, style = {} }) => {
 		}
 	} 
 	return (
-		<section className={`content ${SetTimeout() && 'loaded'} ${styles.products}`} style={style}>
+		<section className={`content ${SetTimeout() && 'loaded'} ${styles.products}`} >
 			{title && <h2 className={styles.title}>{title}</h2>}
-			<div className={styles.list}>
+			<div className={styles.list} style={style}>
 				{!!list.length &&
 					list.map(({ id, images, title, category: { name: cat }, price }) => (
 						<div key={id} className={styles.product}>
-							<Link to={`/product/${id}`}>
+							<Link to={`/product/${id}`} className={styles.link_boxmain}>
 								<div className={styles.image_box}>
 									<img className={styles.image} src={filterImg(images[0])} />
 								</div>

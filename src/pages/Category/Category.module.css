@@ -5,4 +5,8 @@
     height: 100%;
     margin: 20px 0;
     gap: 30px;
+    min-height: 100vh;
+}
+.main{
+    grid-column: 1/3;
 }

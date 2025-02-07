@@ -1,19 +1,19 @@
-import styles from './Cart.module.css'
+import styles from './Favorites.module.css'
 import SideBar from '../../components/SideBar/SideBar'
 import { useDispatch, useSelector } from 'react-redux'
 import close from '../../assets/logo/clear.svg'
 import { filterImg } from '../../utils/FragmentCod/ImageRec'
 import { removeCartAndFav, toggleQuantity } from '../../features/Redux/Slices/userSlice'
-const Cart = () => {
+const Favorites = () => {
 	const dispatch = useDispatch()
-	const { cart } = useSelector((state) => state.user)
+	const { favorites } = useSelector((state) => state.user)
 	return (
 		<div className={styles.wrapper}>
 			<SideBar />
 			<div className={styles.wrapper_cart}>
 				<ul className={styles.cart_list}>
-					{!!cart.length &&
-						cart.map(
+					{!!favorites.length &&
+						favorites.map(
 							(
 								{ id, price, title, quantity, images, category: { name } },
 								i
@@ -36,7 +36,7 @@ const Cart = () => {
 										<button
 											onClick={() => {
 												dispatch(
-													toggleQuantity({ name: 'cart', work: false, idx: i })
+													toggleQuantity({ name: 'favorites', work: false, idx: i })
 												)
 											}}
 											className={styles.list_item_btnprice}
@@ -47,7 +47,7 @@ const Cart = () => {
 										<button
 											onClick={() => {
 												dispatch(
-													toggleQuantity({ name: 'cart', work: true, idx: i })
+													toggleQuantity({ name: 'favorites', work: true, idx: i })
 												)
 											}}
 											className={styles.list_item_btnprice}
@@ -58,7 +58,7 @@ const Cart = () => {
 									<button
 										onClick={() => {
 											dispatch(
-												removeCartAndFav({ name: 'cart', idx: i })
+												removeCartAndFav({ name: 'favorites', idx: i })
 											)
 										}}
 										className={styles.list_item_close_btn}
@@ -74,4 +74,4 @@ const Cart = () => {
 	)
 }
 
-export default Cart
+export default Favorites

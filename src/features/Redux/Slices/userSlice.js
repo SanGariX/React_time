@@ -91,12 +91,25 @@ const userSlice = createSlice({
 			state.formType = payload
 		},
 		// auto regist from local storage
-		localUserStorage: (state)=>{
-			state.currentUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null
-		},
 		resetAccount: (state)=>{
 			state.currentUser = null
 			localStorage.clear()
+		},
+		toggleQuantity: (state, {payload})=>{
+			if(payload.name === "favorites"){
+				if(state.favorites[payload.idx].quantity <= 1 && !payload.work) return 
+				payload.work ? state.favorites[payload.idx].quantity += 1 : state.favorites[payload.idx].quantity -= 1
+			}else{
+				if(state.cart[payload.idx].quantity <= 1 && !payload.work) return 
+				payload.work ? state.cart[payload.idx].quantity += 1 : state.cart[payload.idx].quantity -= 1
+			}
+		},
+		removeCartAndFav: (state, {payload})=>{
+			if(payload.name === "favorites"){
+				state.favorites = state.favorites.filter((_, i) => i !== payload.idx)
+			}else{
+				state.cart = state.cart.filter((_, i) => i !== payload.idx)
+			}
 		}
 	},
 	extraReducers: (builder) => {
@@ -110,4 +123,4 @@ const userSlice = createSlice({
 })
 
 export default userSlice.reducer
-export const { addItem, toggleForm, toggleTypeForm, localUserStorage, resetAccount } = userSlice.actions
+export const { addItem, toggleForm, toggleTypeForm, resetAccount, toggleQuantity, removeCartAndFav } = userSlice.actions
